@@ -57,8 +57,7 @@
 ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/bili.js
 
 # 漫画去广告
-^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/Flash url reject-dict
-^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/ListFlash url reject-dict# BiliBili_哔哩哔哩_Material_Ad@ddgksf2013
+
 ^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report url reject-dict
 
 # IP请求,地理位置请求
