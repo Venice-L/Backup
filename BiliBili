@@ -32,4 +32,4 @@
 ^http:\/\/.*:4480\/upgcxcode url reject
 ^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index url script-response-body https://raw.githubusercontent.com/MCdasheng/Module/main/Scripts/BiliBili_AdBlock.js
 
-hostname = app.bilibili.com,api.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com,ap?.bilibili.com,*.biliapi.*,*.bilibili.*
+hostname = app.bilibili.com,api.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com,ap?.bilibili.com,*.biliapi.*,*.bilibili.*,i0.hdslb.com,-broadcast.chat.bilibili.com
