@@ -28,5 +28,8 @@
 ^https://api.bilibili.com/pgc/season/player/cards url reject-dict
 # ～ BiliBili_嗶哩嗶哩_解除SIM卡地區限制
 (^https?:\/\/app\.biliintl.com\/intl\/.+)(&sim_code=\d+)(.+) url 302 $1$3
+# 屏蔽B站视频流4480端口
+^http:\/\/.*:4480\/upgcxcode url reject
+^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index url script-response-body https://raw.githubusercontent.com/MCdasheng/Module/main/Scripts/BiliBili_AdBlock.js
 
-hostname = i0.hdslb.com,api.live.bilibili.com,api.vc.bilibili.com,api.bilibili.com, manga.bilibili.com,-*cdn*.biliapi.net,-broadcast.chat.bilibili.com,-*tracker*.biliapi.net
+hostname = app.bilibili.com,api.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com,ap?.bilibili.com,*.biliapi.*,*.bilibili.*
