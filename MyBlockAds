@@ -153,8 +153,6 @@
 ^https:\/\/api\.coolapk\.com\/v6\/main\/(dataList|indexV8|init) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/coolapk.js
 ^https:\/\/api\.coolapk\.com\/v6\/page\/dataList\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/coolapk.js
 ^https:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch url reject-dict
-# > 夸克 //open-cms-api.quark.cn
-^https?:\/\/open-cms-api\.(uc|quark)\.cn\/open-cms url script-response-body https://raw.githubusercontent.com/fmz200/wool_scripts/main/scripts/quark.js
 
 # ======= L ====== #
 # > 乐刻启动页去广告 //lens.leoao.com
