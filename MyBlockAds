@@ -203,6 +203,26 @@ https://access.mypikpak.com/access_controller/v1/area_accessible url reject
 ^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif url reject
 # 8.47.0以上版本会有部分图片加载不出来
 ^https?:\/\/m\.ctrip\.com\/restapi\/soa2\/13916\/json\/tripAds url reject-200
+# 新浪微博 //
+# > 微博国际版_屏蔽hotsearch@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php\?a=hot_search_users url reject-dict
+# > 微博国际版_屏蔽热推荐@ddgksf2013
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\? url reject-dict
+# > 微博国际版_屏蔽searching_info@shiro
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info url echo-response text/html echo-response https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_info.json
+# > 微博国际版_屏蔽search_topic@shiro
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic url echo-response text/html echo-response https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json
+# > 微博国际版_屏蔽开屏广告@ddgksf2013 
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*get_coopen_ads url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博国际版_屏蔽sdkad@ddgksf2013
+^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua) url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博国际版_趋势顶部Card去广告@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=trends url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博国际版_屏蔽用户VIP栏@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=user_center url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博国际版_热搜处理@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=search_topic url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+
 
 # ======= Y ====== #
 # 云闪付 //wallet.95516.com
@@ -211,8 +231,6 @@ https://access.mypikpak.com/access_controller/v1/area_accessible url reject
 # ======= Z ====== #
 # 中国移动 
 
-# 多个悬浮窗 
-^https:\/\/(client\.app\.coc|h\.app\.coc|app)\.10086\.cn\/biz-orange\/DN\/emotionMarket url reject
 # > 中国联通 //m.client.10010.com
 ^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/getWelcomeAd url reject-200
 ^https?:\/\/m\.client\.10010\.com\/mobileService\/(activity|customer)\/(accountListData|get_client_adv|get_startadv) url reject-img
@@ -228,4 +246,4 @@ https://access.mypikpak.com/access_controller/v1/area_accessible url reject
 # 开屏广告 这个主机名会影响携程部分功能正常运行，需要的自行添加主机名m.ctrip.com, 携程8.40.0以下的版本，不受影响。
 ^https:\/\/m\.ctrip\.com\/restapi\/soa2\/13916\/scjson\/tripAds url reject-dict
 
-hostname = ad.12306.cn,  gw.aihuishou.com, list-app-m.i4.cn, api.alipan.com, member.alipan.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, *.bdstatic.com,mbd.baidu.com, mime.baidu.com,www.baidu.com,m.baidu.com,baidu.com,app-gw.csdn.net, api.douban.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, m*.amap.com,hfapp-service.qweather.net,api.yijingluowangluo.xyz, jdforrepam.com, links.jianshu.com, www.jianshu.com, api.m.jd.com, gab.122.gov.cn, res.kfc.com.cn, api.coolapk.com,open-cms-api.quark.cn,lens.leoao.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, api.pinduoduo.com,access.mypikpak.com, mage*.if.qidian.com,business-cdn.shouji.sogou.com,api.yangkeduo.com, tiebac.baidu.com, *.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, ma-adx.ctrip.com, wallet.95516.com, m.client.10010.com,cloud.189.cn,m.ctrip.com, -i.vip.iqiyi.com, *.iqiyi.com
+hostname = ad.12306.cn,  gw.aihuishou.com, list-app-m.i4.cn, api.alipan.com, member.alipan.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, *.bdstatic.com,mbd.baidu.com, mime.baidu.com,www.baidu.com,m.baidu.com,baidu.com,app-gw.csdn.net, api.douban.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, m*.amap.com,hfapp-service.qweather.net,api.yijingluowangluo.xyz, jdforrepam.com, links.jianshu.com, www.jianshu.com, api.m.jd.com, gab.122.gov.cn, res.kfc.com.cn, api.coolapk.com,open-cms-api.quark.cn,lens.leoao.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, api.pinduoduo.com,access.mypikpak.com, mage*.if.qidian.com,business-cdn.shouji.sogou.com,api.yangkeduo.com, tiebac.baidu.com, *.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, ma-adx.ctrip.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com,wallet.95516.com, m.client.10010.com,cloud.189.cn,m.ctrip.com, -i.vip.iqiyi.com, *.iqiyi.com
