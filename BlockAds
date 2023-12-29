@@ -1,7 +1,5 @@
-#!name = MyBlockAds
-#!desc = 去广告合集，以下app请使用单独配置文件：高德地图,哔哩哔哩,网易云音乐,微博,YouTube,知乎
-#!author = RuCu6
-#!update = 2023-09-19 11:00
+#!name = BlockAds
+#!desc = 去广告合集
 
 # ======= 0 ======= #
 # 12306 开屏广告 //ad.12306.cn
@@ -257,6 +255,28 @@ https://access.mypikpak.com/access_controller/v1/area_accessible url reject
 # ======= Y ====== #
 # 云闪付 //wallet.95516.com
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 url reject
+# Youtube & Youtube Music //%APPEND% *.googlevideo.com, youtubei.googleapis.com
+[Rule]
+AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT-NO-DROP
+
+[Script]
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence),requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.beta.js
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting),requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.beta.js
+
+[Map Local]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data="https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/blank.txt"
+# QX Youtube 无中文字幕机翻方案 //www.youtube.com
+
+// 简体；订阅链接后面加上 #out=Hant 后开启资源解析器
+// https://raw.githubusercontent.com/General74110/QuantumultX/master/Rewrite/Youtube_CC.conf#out=Hant
+
+https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!(zh|zh\-Hans)&)((?!&tlang=zh\-Hans).)*$ url request-header \sHTTP/1\.1(\r\n) request-header &tlang=zh-Hans HTTP/1.1$1
+
+
+// 繁体；订阅链接后面加上 #out=Hans 后开启资源解析器
+// https://raw.githubusercontent.com/General74110/QuantumultX/master/Rewrite/Youtube_CC.conf#out=Hans
+
+https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!zh\-Hant&)((?!&tlang=zh\-Hant).)*$ url request-header \sHTTP/1\.1(\r\n) request-header &tlang=zh-Hant HTTP/1.1$1
 
 # ======= Z ====== #
 # 中国移动 
@@ -276,4 +296,4 @@ https://access.mypikpak.com/access_controller/v1/area_accessible url reject
 # 开屏广告 这个主机名会影响携程部分功能正常运行，需要的自行添加主机名m.ctrip.com, 携程8.40.0以下的版本，不受影响。
 ^https:\/\/m\.ctrip\.com\/restapi\/soa2\/13916\/scjson\/tripAds url reject-dict
 
-hostname = ad.12306.cn,  gw.aihuishou.com, list-app-m.i4.cn, api.alipan.com, member.alipan.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, *.bdstatic.com,mbd.baidu.com, mime.baidu.com,www.baidu.com,m.baidu.com,baidu.com,app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net,app-gw.csdn.net, api.douban.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, m*.amap.com,hfapp-service.qweather.net,api.yijingluowangluo.xyz, jdforrepam.com, links.jianshu.com, www.jianshu.com, api.m.jd.com, gab.122.gov.cn, res.kfc.com.cn, api.coolapk.com,open-cms-api.quark.cn,lens.leoao.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, api.pinduoduo.com,access.mypikpak.com, mage*.if.qidian.com,business-cdn.shouji.sogou.com,api.yangkeduo.com, tiebac.baidu.com, *.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, ma-adx.ctrip.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com,wallet.95516.com, m.client.10010.com,cloud.189.cn,m.ctrip.com, -i.vip.iqiyi.com, *.iqiyi.com
+hostname = ad.12306.cn,  gw.aihuishou.com, list-app-m.i4.cn, api.alipan.com, member.alipan.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, *.bdstatic.com,mbd.baidu.com, mime.baidu.com,www.baidu.com,m.baidu.com,baidu.com,app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net,app-gw.csdn.net, api.douban.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, m*.amap.com,hfapp-service.qweather.net,api.yijingluowangluo.xyz, jdforrepam.com, links.jianshu.com, www.jianshu.com, api.m.jd.com, gab.122.gov.cn, res.kfc.com.cn, api.coolapk.com,open-cms-api.quark.cn,lens.leoao.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, api.pinduoduo.com,access.mypikpak.com, mage*.if.qidian.com,business-cdn.shouji.sogou.com,api.yangkeduo.com, tiebac.baidu.com, *.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, ma-adx.ctrip.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com,wallet.95516.com,%APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, m.client.10010.com,cloud.189.cn,m.ctrip.com, -i.vip.iqiyi.com, *.iqiyi.com
