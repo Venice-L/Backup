@@ -8,10 +8,7 @@
 # ======= A ======= #
 # amdc
 ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch url script-response-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/header.js
-# 爱回收 //gw.aihuishou.com
-^https:\/\/gw.aihuishou.com\/app-portal\/home\/getadvertisement url reject
-# 爱思助手 //list-app-m.i4.cn
-^https:\/\/list-app-m\.i4\.cn\/(adclickcb|getHotSearchList|getopfstadinfo)\.xhtml url reject
+
 # 阿里云盘 //api.alipan.com, member.alipan.com
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders url reject-dict
 ^https:\/\/api\.alipan\.com\/apps\/v2\/users\/home\/(news|widgets) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/adrive.js
@@ -78,9 +75,6 @@
 ^https:\/\/app-gw\.csdn\.net\/cms-app\/v\d\/home_page\/open_advertisement url reject
 
 # ======= D ======= #
-# 豆瓣 //api.douban.com
-^https:\/\/api\.douban\.com\/v2\/app_ads\/splash url reject
-^https:\/\/api\.douban\.com\b.*\/common_ads\? url reject
 
 # ======= E ======= #
 # 饿了么 //elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com
@@ -95,11 +89,43 @@
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(allresource|predict) url reject-dict
 
 # ======= G ====== #
-# > 高德地图 //m*.amap.com
-^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/app\/startup\/init\? url reject-dict
-^https?:\/\/m\d\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\/ url reject-200
-^https?:\/\/m5\.amap\.com\/ws\/valueadded\/ url reject
-^https?:\/\/optimus-ads\.amap\.com\/uploadimg\/ url reject
+# > 高德地图 //m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com
+# 其他
+^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$ url script-response-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/header.js
+
+# 导航详情页,路线规划,地点详情页,搜索详情页,导航结束页
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(car-end|route-plan)\? url reject-dict
+^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/(routeInfo|routePlan)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? url reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(common\/coupon\/info|poi\/detail)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? url reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(homepage|mps|search\/sp|sug|tips_operation_location)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/oss\.amap\.com\/ws\/banner\/lists\/\? url reject-dict
+
+# 首页,推广卡片,红点角标,右上角动图,搜索框热词,左下角天气,消息横幅
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(card-service-plan-home|main-page)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/main-page-(assets|location)\? url reject-dict
+^https:\/\/m5\.amap\.com\/ws\/(mapapi\/hint_text\/offline_data|message\/notice\/list|shield\/search\/new_hotword)\? url reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/m5\.amap\.com\/ws\/shield\/scene\/recommend\? url reject-dict
+^https:\/\/m5\.amap\.com\/ws\/valueadded\/weather\/v2\? url reject-dict
+^https:\/\/sns\.amap\.com\/ws\/msgbox\/pull_mp\? url reject-dict
+
+# 我的页面,推广卡片
+^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+
+# 附近页
+^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+
+# 开屏广告
+^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+
+# 打车页,红点角标,弹窗,天气图标,推广卡片
+^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(car\/order\/content_info|order_web\/friendly_information)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(order\/car\/king_toolbox_car_bubble|tips\/onscene_visual_optimization)\? url reject-dict
+^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
 
 # ======= H ====== #
 # > 和风天气 去广告 //hfapp-service.qweather.net
@@ -170,16 +196,9 @@ https://access.mypikpak.com/access_controller/v1/area_accessible url reject
 ^https?://(ios|android)\.sogou\.com/[^/]+/sogou_input_[^/]+/[^/]+/index\.html url reject
 
 # ======= T ====== #
-# 贴吧全面去广告 //tiebac.baidu.com
-^http:\/\/c\.tieba\.baidu\.com\/c\/f\/(excellent\/personalized|frs\/(generalTabList|page|threadlist)|pb\/(pic)?page)$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/baidu/tiebaJson.js
-^http:\/\/c\.tieba\.baidu\.com\/c\/f\/(excellent\/personalized|frs\/(generalTabList|page|threadlist)|pb\/(pic)?page)\?cmd url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/baidu/tiebaProto.js
-^http:\/\/c\.tieba\.baidu\.com\/c\/s\/sync$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/baidu/tiebaJson.js
-^https:\/\/tiebac\.baidu\.com\/tiebaads\/commonbatch\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/baidu/tiebaJson.js
 
 # ======= W ====== #
-# 微信 //mp.weixin.qq.com, weixin110.qq.com, security.wechat.com
-## 移除公众号中的推广内容 //mp.weixin.qq.com
-^https:\/\/mp\.weixin\.qq\.com\/mp\/(cps_product_info|getappmsgad|masonryfeed|relatedarticle)\? url reject-dict
+# 微信 // weixin110.qq.com, security.wechat.com
 ## 跳过微信中转页面,解除被封禁链接 //weixin110.qq.com, security.wechat.com
 ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? url script-response-body https://raw.githubusercontent.com/General74110/Quantumult-X/master/Script/WeChat/UnblockURLinWeChat.js
 # ======= X ====== #
@@ -230,14 +249,8 @@ AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT-NO-DROP
 # QX Youtube 无中文字幕机翻方案 //www.youtube.com
 
 // 简体；订阅链接后面加上 #out=Hant 后开启资源解析器
-// https://raw.githubusercontent.com/General74110/QuantumultX/master/Rewrite/Youtube_CC.conf#out=Hant
-
 https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!(zh|zh\-Hans)&)((?!&tlang=zh\-Hans).)*$ url request-header \sHTTP/1\.1(\r\n) request-header &tlang=zh-Hans HTTP/1.1$1
-
-
 // 繁体；订阅链接后面加上 #out=Hans 后开启资源解析器
-// https://raw.githubusercontent.com/General74110/QuantumultX/master/Rewrite/Youtube_CC.conf#out=Hans
-
 https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!zh\-Hant&)((?!&tlang=zh\-Hant).)*$ url request-header \sHTTP/1\.1(\r\n) request-header &tlang=zh-Hant HTTP/1.1$1
 
 # ======= Z ====== #
@@ -258,4 +271,4 @@ https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!zh\-Hant&)((?!&tlang=zh\-H
 # 开屏广告 这个主机名会影响携程部分功能正常运行，需要的自行添加主机名m.ctrip.com, 携程8.40.0以下的版本，不受影响。
 ^https:\/\/m\.ctrip\.com\/restapi\/soa2\/13916\/scjson\/tripAds url reject-dict
 
-hostname = ad.12306.cn,  gw.aihuishou.com, list-app-m.i4.cn, api.alipan.com, member.alipan.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, *.bdstatic.com,mbd.baidu.com, mime.baidu.com,www.baidu.com,m.baidu.com,baidu.com,app-gw.csdn.net, api.douban.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, m*.amap.com,hfapp-service.qweather.net,api.yijingluowangluo.xyz, jdforrepam.com, links.jianshu.com, www.jianshu.com, api.m.jd.com, gab.122.gov.cn, res.kfc.com.cn, api.coolapk.com,open-cms-api.quark.cn,lens.leoao.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, api.pinduoduo.com,access.mypikpak.com, mage*.if.qidian.com,business-cdn.shouji.sogou.com,api.yangkeduo.com, tiebac.baidu.com, *.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, ma-adx.ctrip.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com,wallet.95516.com,%APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, m.client.10010.com,cloud.189.cn,m.ctrip.com, -i.vip.iqiyi.com, *.iqiyi.com
+hostname = ad.12306.cn, api.alipan.com, member.alipan.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, *.bdstatic.com,mbd.baidu.com, mime.baidu.com,www.baidu.com,m.baidu.com,baidu.com,app-gw.csdn.net, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,hfapp-service.qweather.net,api.yijingluowangluo.xyz, jdforrepam.com, links.jianshu.com, www.jianshu.com, api.m.jd.com, gab.122.gov.cn, res.kfc.com.cn, api.coolapk.com,lens.leoao.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, api.pinduoduo.com,access.mypikpak.com, mage*.if.qidian.com,business-cdn.shouji.sogou.com,api.yangkeduo.com, *.sgcc.com.cn, weixin110.qq.com, security.wechat.com, ma-adx.ctrip.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com,wallet.95516.com,%APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, m.client.10010.com,cloud.189.cn,m.ctrip.com, -i.vip.iqiyi.com, *.iqiyi.com
