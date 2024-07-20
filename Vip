@@ -1,5 +1,4 @@
 # 夸克vip
-^https?:\/\/drive.*\.quark\.cn\/.+\/clouddrive\/(member.+|distribute\/detail.+|capacity\/growth\/info) url script-response-body https://raw.githubusercontent.com/chxm1023/Rewrite/main/kuake.js
 
 # > WPS 解锁超级会员 Pro      *.wps.cn
 ^https?:\/\/(account|drive|vas|userinfo.docer)\.wps\.cn\/(.*api\/(v3\/(mine\/vips|spaces)|users\/\d+\/overview|v1\/list_purchase_info)|user\/v1\/vip_dl_times) url script-response-body https://raw.githubusercontent.com/yqc007/QuantumultX/master/WPSuperVIPuserCrack.js
@@ -31,7 +30,7 @@
 # > PornHub Unlock Premium By Hausd0rff
 ^https?:\/\/cn\.pornhubpremium\.com\/ url script-request-header https://raw.githubusercontent.com/yqc007/QuantumultX/master/PornHubPremiumCrack.js
 
-hostname = drive*.quark.cn, *.wps.cn, *.docer.wps.cn, vipapi.wps.cn, account.wps.cn, account.wps.cn, *account.wps.com, api.alipan.com, member.aliyundrive.com, member.alipan.com, api.aliyundrive.com, *.cyapi.cn, *.caiyunapp.com,cn.pornhubpremium.com
+hostname = *.wps.cn, *.docer.wps.cn, vipapi.wps.cn, account.wps.cn, account.wps.cn, *account.wps.com, api.alipan.com, member.aliyundrive.com, member.alipan.com, api.aliyundrive.com, *.cyapi.cn, *.caiyunapp.com,cn.pornhubpremium.com
 
 # 彩云script
 const chxm1024 = {};
