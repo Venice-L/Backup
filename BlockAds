@@ -200,7 +200,6 @@ https://access.mypikpak.com/access_controller/v1/area_accessible url reject
 # ======= W ====== #
 # 微信 // weixin110.qq.com, security.wechat.com
 ## 跳过微信中转页面,解除被封禁链接 //weixin110.qq.com, security.wechat.com
-^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? url script-response-body https://raw.githubusercontent.com/General74110/Quantumult-X/master/Script/WeChat/UnblockURLinWeChat.js
 # ======= X ====== #
 # 闲鱼 //gw.alicdn.com, acs.m.taobao.com
 ^https:\/\/gw\.alicdn\.com\/mt\/ url reject
