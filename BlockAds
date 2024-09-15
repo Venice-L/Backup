@@ -231,21 +231,8 @@ https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!(zh|zh\-Hans)&)((?!&tlang=
 https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!zh\-Hant&)((?!&tlang=zh\-Hant).)*$ url request-header \sHTTP/1\.1(\r\n) request-header &tlang=zh-Hant HTTP/1.1$1
 
 # ======= Z ====== #
-# 中国移动 
-
-# > 中国联通 //m.client.10010.com
-^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/getWelcomeAd url reject-200
-^https?:\/\/m\.client\.10010\.com\/mobileService\/(activity|customer)\/(accountListData|get_client_adv|get_startadv) url reject-img
-^https?:\/\/m\.client\.10010\.com\/mobileService\/customer\/getclientconfig\.htm url reject-dict
-^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/(getHomePageAd|getWelcomeAd) url reject-img
-^https?:\/\/[^(apple|10010)]+\.(com|cn)\/(a|A)d(s|v)?(\/|\.js) url reject-img
-^https?:\/\/m1\.ad\.10010\.com\/noticeMag\/images\/imageUpload\/2\d{3} url reject-img
-^https?:\/\/res\.mall\.10010\.cn\/mall\/common\/js\/fa\.js?referer= url reject-img
-# > 中国电信 //cloud.189.cn
-^https?:\/\/cloud\.189\.cn\/include\/splash\/ url reject
-^https?:\/\/zt-app\.go189\.cn\/zt-app\/welcome\/.*?Animation url reject-img
 # > 智行APP //m.ctrip.com
 # 开屏广告 这个主机名会影响携程部分功能正常运行，需要的自行添加主机名m.ctrip.com, 携程8.40.0以下的版本，不受影响。
 ^https:\/\/m\.ctrip\.com\/restapi\/soa2\/13916\/scjson\/tripAds url reject-dict
 
-hostname = ad.12306.cn, api.alipan.com, member.alipan.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com, *.bdstatic.com,mbd.baidu.com, mime.baidu.com,www.baidu.com,m.baidu.com,baidu.com,app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net,app-gw.csdn.net, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,hfapp-service.qweather.net,api.yijingluowangluo.xyz, jdforrepam.com, links.jianshu.com, www.jianshu.com, api.m.jd.com, gab.122.gov.cn, res.kfc.com.cn, api.coolapk.com,lens.leoao.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, api.pinduoduo.com,access.mypikpak.com, mage*.if.qidian.com,business-cdn.shouji.sogou.com,api.yangkeduo.com, *.sgcc.com.cn, weixin110.qq.com, security.wechat.com, ma-adx.ctrip.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com,wallet.95516.com,%APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, m.client.10010.com,cloud.189.cn,m.ctrip.com, -i.vip.iqiyi.com, *.iqiyi.com
+hostname = ad.12306.cn, api.alipan.com, member.alipan.com, acs.m.taobao.com, gw.alicdn.com, heic.alicdn.com,app-gw.csdn.net, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,hfapp-service.qweather.net,api.yijingluowangluo.xyz, jdforrepam.com, links.jianshu.com, www.jianshu.com, api.m.jd.com, gab.122.gov.cn, res.kfc.com.cn, api.coolapk.com,lens.leoao.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, api.pinduoduo.com,access.mypikpak.com, mage*.if.qidian.com,business-cdn.shouji.sogou.com,api.yangkeduo.com, *.sgcc.com.cn, weixin110.qq.com, security.wechat.com, ma-adx.ctrip.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com,wallet.95516.com,%APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, m.ctrip.com, -i.vip.iqiyi.com, *.iqiyi.com
